@@ -194,7 +194,7 @@
     <div class="card pad about">
       <div class="row"><Icon name="wifi-off" size={17} /><strong>Offline-first, by design</strong></div>
       <p class="small muted" style="margin:0">Identity creation, courses, communities, events, pages, AI memory, mentorship and the ledger all work with no network. A relay adds reach, not permission.</p>
-      <div class="row wrap"><span class="chip plain">{union.records.length} records</span><span class="chip plain">{kb(bytes)}</span><span class="chip plain">v0.0.1</span></div>
+      <div class="row wrap"><span class="chip plain">{union.records.length} records</span><span class="chip plain">{kb(bytes)}</span><span class="chip plain">v0.1.0</span></div>
     </div>
   </section>
 </main>

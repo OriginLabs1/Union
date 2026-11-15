@@ -87,7 +87,7 @@
       `Trial: ${request.trialUntil ? formatDate(request.trialUntil) : '—'}`,
       `Status: ${request.status}`,
       '',
-      'Sent from Union v0.0.1 · test mode. No funds move inside the app.'
+      'Sent from Union v0.1.0 · test mode. No funds move inside the app.'
     ].filter(Boolean).join('\n');
   });
 
@@ -285,7 +285,7 @@
 <main class="screen economy">
   <div class="banner warn risk-stripes">
     <Icon name="alert" size={17} />
-    <div><strong>v0.0.1 test mode.</strong> Every economic record here is honest about itself: no real funds move inside the app, and no withdrawable value is promised. A production economy needs a backed provider, custody and legal support.</div>
+    <div><strong>v0.1.0 test mode.</strong> Every economic record here is honest about itself: no real funds move inside the app, and no withdrawable value is promised. A production economy needs a backed provider, custody and legal support.</div>
   </div>
 
   <section class="section">
@@ -464,7 +464,7 @@
         {#if request.proof && request.status !== 'verified'}
           <details class="testverify">
             <summary class="small muted">Test mode · simulate verification</summary>
-            <p class="hint">For v0.0.1 demonstrations only. Real verification happens with {ASSISTANT_NAME} after the proof is reviewed.</p>
+            <p class="hint">For v0.1.0 demonstrations only. Real verification happens with {ASSISTANT_NAME} after the proof is reviewed.</p>
             <button class="btn sm soft" onclick={verifyInTestMode} disabled={busy}><Icon name="check" size={14} /> Mark verified in test mode</button>
           </details>
         {:else if request.status === 'verified'}

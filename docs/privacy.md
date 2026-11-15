@@ -65,7 +65,7 @@ Use your own relay if metadata matters to you. The Worker and schema are in [`se
 
 - Local records remain until you delete them, reset the app, or uninstall.
 - A relay keeps an unacknowledged message for up to 30 days and an acknowledged message for up to 1 day; links expire when their owner says they do.
-- Activation proofs exist in the local request record and in whatever package you send. There is no server-side proof archive in v0.0.1.
+- Activation proofs exist in the local request record and in whatever package you send. There is no server-side proof archive in v0.1.0.
 
 ## Your controls
 

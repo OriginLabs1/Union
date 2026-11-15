@@ -106,7 +106,7 @@
         <button class="btn xs ghost" onclick={() => router.go('/explore')}><Icon name="book" size={13} /> Constitution in practice</button>
       </div>
       <p class="tiny faint" style="margin:10px 0 0">
-        v0.0.1 disclosure: economic records are transparent but operate in test mode. No real funds
+        v0.1.0 disclosure: economic records are transparent but operate in test mode. No real funds
         move inside the app. Withdrawable value requires a backed provider, custody and legal support.
       </p>
     </div>

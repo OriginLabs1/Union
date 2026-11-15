@@ -125,7 +125,7 @@
     <div class="principles">
       <div><span class="pico"><Icon name="fingerprint" size={17} /></span><span><strong>Verifiable identity.</strong> A key pair, not a profile rented from a platform.</span></div>
       <div><span class="pico"><Icon name="shield" size={17} /></span><span><strong>Consent is scoped.</strong> Contact is not permission. Every scope can be revoked.</span></div>
-      <div><span class="pico gold"><Icon name="coins" size={17} /></span><span><strong>Honest records.</strong> Digital Giving is transparent — and in test mode for v0.0.1.</span></div>
+      <div><span class="pico gold"><Icon name="coins" size={17} /></span><span><strong>Honest records.</strong> Digital Giving is transparent — and in test mode for v0.1.0.</span></div>
     </div>
 
     <div class="cta">
@@ -265,7 +265,7 @@
       <div>
         <strong>Activation Token:</strong> minimum ${ACTIVATION_MIN_USD} equivalent (Naira
         accepted). Request activation in Economy and upload proof for a {TRIAL_DAYS}-day trial
-        while it is reviewed. v0.0.1 records this in test mode — no funds move inside the app.
+        while it is reviewed. v0.1.0 records this in test mode — no funds move inside the app.
       </div>
     </div>
 

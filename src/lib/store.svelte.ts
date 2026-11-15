@@ -1889,7 +1889,7 @@ class UnionStore {
         verifiedBy: 'Union Creator · OriginBot'
       } as ActivationRequest);
     }
-    toasts.push('Activation verified. v0.0.1 records it in test mode — no funds moved inside the app.', 'success');
+    toasts.push('Activation verified. v0.1.0 records it in test mode — no funds moved inside the app.', 'success');
   }
 
   async reactivate(method: string, reference: string): Promise<void> {
@@ -2120,7 +2120,7 @@ class UnionStore {
   async exportFull(passphrase: string, includeKeys: boolean): Promise<string> {
     const payload = {
       schema: 'union.backup.v1',
-      version: '0.0.1',
+      version: '0.1.0',
       exportedAt: now(),
       identity: this.identity,
       keyring: includeKeys ? this.keys : undefined,

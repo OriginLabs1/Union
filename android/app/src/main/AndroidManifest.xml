@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.oneorigin.union"
-    android:versionCode="1"
-    android:versionName="0.0.1">
+    android:versionCode="2"
+    android:versionName="0.1.0">
 
     <!--
-      Union v0.0.1 needs INTERNET for two reasons only:
+      Union v0.1.0 needs INTERNET for two reasons only:
         * a loopback asset server on 127.0.0.1, which gives the WebView a
           secure context so IndexedDB, WebCrypto and the service worker work;
         * the optional, user-configured relay for signed store-and-forward.

@@ -18,7 +18,7 @@ import android.widget.FrameLayout;
 import android.widget.Toast;
 
 /**
- * Union v0.0.1 Android shell.
+ * Union v0.1.0 Android shell.
  *
  * A small, auditable WebView host. The packaged web surface is served from a
  * loopback-only asset server so it gets a secure origin: IndexedDB, WebCrypto
@@ -97,7 +97,7 @@ public class MainActivity extends Activity {
         if (Build.VERSION.SDK_INT >= 33) {
             settings.setAlgorithmicDarkeningAllowed(false);
         }
-        settings.setUserAgentString(settings.getUserAgentString() + " Union/0.0.1");
+        settings.setUserAgentString(settings.getUserAgentString() + " Union/0.1.0");
 
         web.setWebViewClient(new WebViewClient() {
             @Override

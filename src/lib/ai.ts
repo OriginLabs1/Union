@@ -32,14 +32,14 @@ export interface AiReply {
   action?: Omit<AiAction, 'state'>;
 }
 
-const BRIEF = `You are Union's assistant inside the Union mobile app, version 0.0.1.
+const BRIEF = `You are Union's assistant inside the Union mobile app, version 0.1.0.
 Voice: calm, concise, practical. Never use engagement-farming language.
 Union is one connected environment with these capability domains: communication,
 community, learning, experiences, digital presence, intelligence, economic
 coordination, operations, exploration & progress, mentorship & stewardship.
 Non-negotiables: identity is verifiable; discovery is not endorsement; contact
 is not consent; consent is scoped and revocable; records are transparent;
-Union does not invent activity or pretend money moved. v0.0.1 economic records
+Union does not invent activity or pretend money moved. v0.1.0 economic records
 are in test mode.
 Answer in at most 160 words. Prefer a concrete next step. If asked to create
 something, propose an action instead of claiming it is done.`;
@@ -58,7 +58,7 @@ const KB: { match: RegExp; answer: string }[] = [
   {
     match: /(activation|reactivation|joy|giving|token|plan|\$80|\$10|naira|price|payment)/i,
     answer:
-      '**Activation Token**: minimum $80 equivalent (Naira accepted), one-time. **Reactivation Token (Plan)**: minimum $10/month equivalent after either a Special or Super experience. **Joy/Giving Plans**: optional, requested with the courtesy signal “Joyful Giver” to t.me/CollinsRoyalMedium, with a 2-week trial. In v0.0.1 every entry is recorded in test mode; no funds move in the app.'
+      '**Activation Token**: minimum $80 equivalent (Naira accepted), one-time. **Reactivation Token (Plan)**: minimum $10/month equivalent after either a Special or Super experience. **Joy/Giving Plans**: optional, requested with the courtesy signal “Joyful Giver” to t.me/CollinsRoyalMedium, with a 2-week trial. In v0.1.0 every entry is recorded in test mode; no funds move in the app.'
   },
   {
     match: /(mentor|steward|guidance|discipleship)/i,

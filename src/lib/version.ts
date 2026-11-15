@@ -1,4 +1,4 @@
-export const VERSION = '0.0.1';
+export const VERSION = '0.1.0';
 export const BUILD_NAME = 'Union · connected environment';
 export const CONSTITUTION_TAGLINE =
   'Identity is verifiable. Discovery is not endorsement. Contact is not consent.';

@@ -11,7 +11,7 @@ interface UnionHost {
   setTheme(color: string): void;
   haptic?(kind: string): void;
   exit(): void;
-  /** Present from v0.0.1 Android shell: writes into Downloads/Union. */
+  /** Present from v0.1.0 Android shell: writes into Downloads/Union. */
   saveFile?(name: string, mime: string, base64: string): string;
 }
 

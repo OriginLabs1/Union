@@ -49,7 +49,7 @@ export function officialRecords(identity: Identity): UnionRecord[] {
   const assembly: Event = {
     type: 'event',
     id: 'event_union_assembly_001',
-    title: 'Union Assembly — v0.0.1',
+    title: 'Union Assembly — v0.1.0',
     about:
       'A first open assembly for people testing Union. We will walk through identity, consent, Digital Giving records and the Explorer journey together. Bring one question.',
     start: '2026-11-21T17:00:00.000Z',
@@ -137,10 +137,10 @@ export function officialRecords(identity: Identity): UnionRecord[] {
         title: 'Digital Giving without confusion',
         minutes: 6,
         body:
-          '# Clear language, clear obligations\n\nUnion uses human language: **Digital Giving Methods**, **Packages**, **Participants**, **Plans** and **Giving & Compensation Records**. Softer words must never hide a real obligation.\n\nThree things are deliberately separate:\n\n1. **Tokens** can represent monetary or non-monetary value.\n2. **Recognition** (for example Joy tokens) is not automatically redeemable money.\n3. **Withdrawable balances** require proper backing, custody and legal support.\n\n## The initial plans\n\n- **Activation Token** — a minimum of **$80 equivalent** (a Naira equivalent is acceptable). It activates a participant.\n- **Reactivation Token (Plan)** — a minimum of **$10/month equivalent**, after either a **Special** or **Super** experience of the Union app.\n- **Joy/Giving Plans** — optional. Request the exact plan by sending **“Joyful Giver”** as a courtesy signal to Union’s Creator on Telegram: **t.me/CollinsRoyalMedium**. A **2-week trial** can be started before deciding.\n\nThe app records every entry in a transparent, hash-chained ledger. In v0.0.1 these records are in **test mode**: no real funds move inside the app. That disclosure is part of the design, not a footnote.\n\n## Practice\n\nOpen **Economy** and read one ledger entry from top to bottom. Find the amount, the currency, the reason, the hash and the test-mode disclosure.',
+          '# Clear language, clear obligations\n\nUnion uses human language: **Digital Giving Methods**, **Packages**, **Participants**, **Plans** and **Giving & Compensation Records**. Softer words must never hide a real obligation.\n\nThree things are deliberately separate:\n\n1. **Tokens** can represent monetary or non-monetary value.\n2. **Recognition** (for example Joy tokens) is not automatically redeemable money.\n3. **Withdrawable balances** require proper backing, custody and legal support.\n\n## The initial plans\n\n- **Activation Token** — a minimum of **$80 equivalent** (a Naira equivalent is acceptable). It activates a participant.\n- **Reactivation Token (Plan)** — a minimum of **$10/month equivalent**, after either a **Special** or **Super** experience of the Union app.\n- **Joy/Giving Plans** — optional. Request the exact plan by sending **“Joyful Giver”** as a courtesy signal to Union’s Creator on Telegram: **t.me/CollinsRoyalMedium**. A **2-week trial** can be started before deciding.\n\nThe app records every entry in a transparent, hash-chained ledger. In v0.1.0 these records are in **test mode**: no real funds move inside the app. That disclosure is part of the design, not a footnote.\n\n## Practice\n\nOpen **Economy** and read one ledger entry from top to bottom. Find the amount, the currency, the reason, the hash and the test-mode disclosure.',
         practice: 'Record a test gift and verify its hash chain.',
         quiz: {
-          question: 'Which statement is honest about Union v0.0.1?',
+          question: 'Which statement is honest about Union v0.1.0?',
           options: [
             'Every token can be withdrawn as cash immediately.',
             'Joy tokens are always money.',
@@ -148,7 +148,7 @@ export function officialRecords(identity: Identity): UnionRecord[] {
             'The Activation Token is optional for everyone forever.'
           ],
           answer: 2,
-          why: 'v0.0.1 records real intentions and transparent entries, but does not pretend to custody or move funds. Monetary tokens need backing, custody and legal support.'
+          why: 'v0.1.0 records real intentions and transparent entries, but does not pretend to custody or move funds. Monetary tokens need backing, custody and legal support.'
         }
       },
       {
@@ -264,7 +264,7 @@ export function officialRecords(identity: Identity): UnionRecord[] {
     title: 'Digital Giving Literacy',
     subtitle: 'Tokens, plans, records and honest limits',
     about:
-      'Learn the exact Union economic vocabulary and the three initial plans, including what v0.0.1 does and does not do.',
+      'Learn the exact Union economic vocabulary and the three initial plans, including what v0.1.0 does and does not do.',
     level: 'practical',
     minutes: 18,
     color: '#b45309',
@@ -293,7 +293,7 @@ export function officialRecords(identity: Identity): UnionRecord[] {
         title: 'Activation and Reactivation',
         minutes: 5,
         body:
-          '# The first two plans\n\nThe **Activation Token** has a minimum of **$80 equivalent**. A Naira equivalent is acceptable. It is a one-time activation of a participant.\n\nThe **Reactivation Token (Plan)** has a minimum of **$10/month equivalent**. It applies after either a **Special** or a **Super** experience of the Union mobile app. Special is the lighter, focused experience. Super is the expanded experience with broader AI and organisational tools.\n\nNeither plan should be described as a subscription in ordinary language if that would obscure the obligation. Union says *Plan* and shows the period.\n\n## In the app\n\nEconomy → Plans shows the amount in USD and in Naira at the reference rate you set. Every activation creates a transparent record. In v0.0.1, payments are in test mode and no money moves.',
+          '# The first two plans\n\nThe **Activation Token** has a minimum of **$80 equivalent**. A Naira equivalent is acceptable. It is a one-time activation of a participant.\n\nThe **Reactivation Token (Plan)** has a minimum of **$10/month equivalent**. It applies after either a **Special** or a **Super** experience of the Union mobile app. Special is the lighter, focused experience. Super is the expanded experience with broader AI and organisational tools.\n\nNeither plan should be described as a subscription in ordinary language if that would obscure the obligation. Union says *Plan* and shows the period.\n\n## In the app\n\nEconomy → Plans shows the amount in USD and in Naira at the reference rate you set. Every activation creates a transparent record. In v0.1.0, payments are in test mode and no money moves.',
         practice: 'Open Economy → Plans and compare the USD and Naira display.',
         quiz: {
           question: 'When does the Reactivation Token (Plan) apply?',
@@ -320,7 +320,7 @@ export function officialRecords(identity: Identity): UnionRecord[] {
             'By sending “Joyful Giver” to the Creator on Telegram as a courtesy signal',
             'By purchasing it automatically at signup',
             'By writing a public post',
-            'It cannot be requested in v0.0.1'
+            'It cannot be requested in v0.1.0'
           ],
           answer: 0,
           why: 'The courtesy signal goes to t.me/CollinsRoyalMedium, and a 2-week trial mode is available.'

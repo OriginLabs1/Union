@@ -3,14 +3,17 @@
  *  There is no background sync, no push and no analytics endpoint. Navigation
  *  falls back to the cached shell when the network is unavailable. */
 
-const VERSION = 'union-v0.0.1';
+const VERSION = 'union-v0.1.0';
 const SHELL = [
   './',
   './index.html',
   './manifest.webmanifest',
   './icons/favicon.svg',
+  './icons/favicon-32.png',
   './icons/icon-192.png',
   './icons/icon-512.png',
+  './icons/icon-maskable-192.png',
+  './icons/icon-maskable-512.png',
   './icons/apple-touch-icon.png'
 ];
 

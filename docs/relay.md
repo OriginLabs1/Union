@@ -138,7 +138,7 @@ spaces(id, owner_id, name, about, color, visibility, created_at)
 posts(id, community_id, author_id, author_name, body, created_at)
 ```
 
-The full schema is in [`schema.sql`](../server/schema.sql). Apply it before the first deploy; migrations are additive in v0.0.1.
+The full schema is in [`schema.sql`](../server/schema.sql). Apply it before the first deploy; migrations are additive in v0.1.0.
 
 ## Operating honestly
 
@@ -150,4 +150,4 @@ The full schema is in [`schema.sql`](../server/schema.sql). Apply it before the 
 
 ## The Telegram assistant is separate
 
-[@Oneorigin_bot](https://t.me/Oneorigin_bot) is the public assistant that receives activation proofs and reports to the Creator. Its bot token belongs in a secret store (for example `wrangler secret put TELEGRAM_BOT_TOKEN` on a separate Worker), never in git. v0.0.1 packages the proof inside Union and opens the bot with the package ready to send; it does not ship a bot token.
+[@Oneorigin_bot](https://t.me/Oneorigin_bot) is the public assistant that receives activation proofs and reports to the Creator. Its bot token belongs in a secret store (for example `wrangler secret put TELEGRAM_BOT_TOKEN` on a separate Worker), never in git. v0.1.0 packages the proof inside Union and opens the bot with the package ready to send; it does not ship a bot token.

@@ -1,0 +1,625 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Union — keep the ordinary close</title>
+  <meta name="description" content="Union is a local-first app for messages, rooms, learning, plans and records. Your identity and keys stay on your device. The network is optional.">
+  <meta name="theme-color" content="#f4f1ea" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#101116" media="(prefers-color-scheme: dark)">
+  <meta name="color-scheme" content="light dark">
+  <link rel="canonical" href="{{SITE_URL}}">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Union">
+  <meta property="og:title" content="Union — keep the ordinary close">
+  <meta property="og:description" content="Messages, rooms, lessons, plans and records. Kept on your phone, not on a server.">
+  <meta property="og:url" content="{{SITE_URL}}">
+  <meta property="og:image" content="{{SITE_URL}}assets/og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Union — keep the ordinary close">
+  <meta name="twitter:description" content="A local-first app for the ordinary parts of a life.">
+  <meta name="twitter:image" content="{{SITE_URL}}assets/og.jpg">
+  <link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="icons/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    try {
+      const saved = localStorage.getItem('union-theme');
+      if (saved === 'light' || saved === 'dark') document.documentElement.dataset.theme = saved;
+    } catch {}
+  </script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<svg class="sprite" aria-hidden="true">
+  <symbol id="i-message" viewBox="0 0 24 24"><path d="M20.5 12.2c0 4-3.8 7.2-8.5 7.2a10 10 0 0 1-2.6-.3L4.5 21l1.2-4.2A6.8 6.8 0 0 1 3.5 12c0-4 3.8-7.2 8.5-7.2s8.5 3.2 8.5 7.4Z"/><path d="M8.5 12h.01M12 12h.01M15.5 12h.01"/></symbol>
+  <symbol id="i-people" viewBox="0 0 24 24"><circle cx="9" cy="8.5" r="3.2"/><path d="M3.5 20c.5-3.4 2.8-5.3 5.5-5.3s5 1.9 5.5 5.3"/><path d="M16 5.6a3 3 0 0 1 0 5.8"/><path d="M17.5 14.9c2 .5 3.2 2.3 3.5 5.1"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 4.5h6a3 3 0 0 1 3 3V20a2.6 2.6 0 0 0-2.6-2.6H4V4.5Z"/><path d="M20 4.5h-6a3 3 0 0 0-3 3V20a2.6 2.6 0 0 1 2.6-2.6H20V4.5Z"/></symbol>
+  <symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="m14.8 9.2-1.7 3.9-3.9 1.7 1.7-3.9 3.9-1.7Z"/></symbol>
+  <symbol id="i-layout" viewBox="0 0 24 24"><rect x="3.5" y="4.5" width="17" height="15" rx="2.4"/><path d="M3.5 9.5h17M9.5 9.5v10"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 2.8 13.9 9l6.1 1.9-6.1 1.9L12 19l-1.9-6.2L4 10.9 10.1 9 12 2.8Z"/><path d="M18.8 16.5 19.7 19l2.5.9-2.5.9-.9 2.5-.9-2.5-2.5-.9 2.5-.9.9-2.5Z"/></symbol>
+  <symbol id="i-coins" viewBox="0 0 24 24"><ellipse cx="9" cy="6.5" rx="5.5" ry="2.5"/><path d="M3.5 6.5v4c0 1.4 2.5 2.5 5.5 2.5s5.5-1.1 5.5-2.5v-4"/><path d="M3.5 10.5v4c0 1.4 2.5 2.5 5.5 2.5 1.1 0 2.1-.1 3-.4"/><ellipse cx="16" cy="14" rx="4.5" ry="2"/><path d="M11.5 14v3.5c0 1.1 2 2 4.5 2s4.5-.9 4.5-2V14"/></symbol>
+  <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2.2"/><circle cx="9" cy="17" r="2.2"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3.4 2.6 5.3 5.8.8-4.2 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8-4.2-4.1 5.8-.8L12 3.4Z"/></symbol>
+  <symbol id="i-handshake" viewBox="0 0 24 24"><path d="m3 11 4-4 4 3 1.5-1.5L16 12l-3 3-2-2"/><path d="m13 15 2 2 3-3 3-3-4-4-3 3"/><path d="M3 11v5l3 3 4-3"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3.2 5 6v5.3c0 4.4 3 7.8 7 9.5 4-1.7 7-5.1 7-9.5V6l-7-2.8Z"/><path d="m9 12 2.2 2.2L15.5 10"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4.5" y="10" width="15" height="10" rx="2.4"/><path d="M8 10V7.5a4 4 0 0 1 8 0V10"/><path d="M12 14v2.5"/></symbol>
+  <symbol id="i-fingerprint" viewBox="0 0 24 24"><path d="M12 3.5a8.5 8.5 0 0 0-8.4 7.2"/><path d="M9.2 20.2a13 13 0 0 0 1.1-5.4 1.7 1.7 0 1 1 3.4 0c0 1.8-.2 3.5-.7 5.1"/><path d="M20.4 12.6A8.5 8.5 0 0 0 12 3.5"/><path d="M5.4 16.8a8.5 8.5 0 0 1-.6-3.1 7.2 7.2 0 1 1 14.4 1.4"/><path d="M12 12.5c0 2.8-.5 5.4-1.5 7.6"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3.5v11"/><path d="m7.5 10.5 4.5 4.5 4.5-4.5"/><path d="M4 17.5v1.5A1.5 1.5 0 0 0 5.5 20.5h13a1.5 1.5 0 0 0 1.5-1.5v-1.5"/></symbol>
+  <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></symbol>
+  <symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="M19 12H5"/><path d="m11 6-6 6 6 6"/></symbol>
+  <symbol id="i-external" viewBox="0 0 24 24"><path d="M13 4h7v7"/><path d="M20 4 11 13"/><path d="M18 14v4.5a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 4 18.5v-11A1.5 1.5 0 0 1 5.5 6H10"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.4 4.4L19.5 6.8"/></symbol>
+  <symbol id="i-github" viewBox="0 0 24 24"><path d="M9.2 20.5c-4.4 1.3-4.4-2.2-6.2-2.7"/><path d="M15 21v-3.2c0-.9.1-1.3-.5-1.8 2.8-.3 5.8-1.4 5.8-6.2a4.8 4.8 0 0 0-1.3-3.4 4.4 4.4 0 0 0-.1-3.4s-1.1-.3-3.5 1.3a12 12 0 0 0-6.3 0C6.7 2.7 5.6 3 5.6 3a4.4 4.4 0 0 0-.1 3.4 4.8 4.8 0 0 0-1.3 3.4c0 4.8 3 5.9 5.8 6.2-.4.4-.6.9-.6 1.5V21"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M3.7 9.5h16.6M3.7 14.5h16.6"/><path d="M12 3.5c2.4 2.3 3.6 5.2 3.6 8.5s-1.2 6.2-3.6 8.5c-2.4-2.3-3.6-5.2-3.6-8.5S9.6 5.8 12 3.5Z"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><rect x="6.5" y="2.5" width="11" height="19" rx="2.6"/><path d="M10.5 18.5h3"/></symbol>
+  <symbol id="i-monitor" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12.5" rx="2"/><path d="M8 20.5h8M12 16.5v4"/></symbol>
+  <symbol id="i-terminal" viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="15" rx="2.4"/><path d="m7 9 3 3-3 3M12.5 15H17"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="14" rx="2.4"/><path d="m4.5 6.5 7.5 6 7.5-6"/></symbol>
+  <symbol id="i-chevron-right" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol>
+  <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="15.5" r="4"/><path d="m11 12.5 8.5-8.5M16 6l2.5 2.5M18.5 3.5 21 6"/></symbol>
+  <symbol id="i-hash" viewBox="0 0 24 24"><path d="M9 3.5 7.5 20.5M16.5 3.5 15 20.5M4 9h16M3 15h16"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.2 5.2l1.4 1.4M17.4 17.4l1.4 1.4M18.8 5.2l-1.4 1.4M6.6 17.4l-1.4 1.4"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+  <symbol id="i-note" viewBox="0 0 24 24"><path d="M6 3.5h9l4 4v13H6v-17Z"/><path d="M15 3.5v4h4"/><path d="M9 12h7M9 15.5h7M9 8.5h2"/></symbol>
+  <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v5.5"/><circle cx="12" cy="8" r=".7"/></symbol>
+</svg>
+
+<header class="site-head" id="site-head">
+  <div class="wrap head-inner">
+    <a class="brand" href="/" aria-label="Union home">
+      <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true">
+        <path d="M20 14.25V37.75A12 12 0 0 0 44 37.75V14.25" fill="none" stroke="currentColor" stroke-width="7.6"/>
+        <path d="M32 34.55 37.2 39.75 32 44.95 26.8 39.75Z" fill="var(--gold)"/>
+      </svg>
+      <span class="brand-word">Union</span>
+    </a>
+    <nav class="nav" id="nav" aria-label="Primary">
+      <a href="#what">What it is</a>
+      <a href="#practice">Practice</a>
+      <a href="#inside">Inside</a>
+      <a href="#privacy">Privacy</a>
+      <a href="#install">Install</a>
+      <a href="docs/">Documentation</a>
+    </nav>
+    <div class="head-actions">
+      <button class="iconbtn" id="theme-toggle" type="button" aria-label="Switch colour theme" title="Switch colour theme">
+        <svg class="icon theme-sun" aria-hidden="true"><use href="#i-sun"/></svg>
+        <svg class="icon theme-moon" aria-hidden="true"><use href="#i-moon"/></svg>
+      </button>
+      <a class="btn primary sm" href="{{APP_URL}}">Open Union <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+      <button class="iconbtn menu-btn" id="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav">
+        <svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero">
+    <div class="hero-glow" aria-hidden="true"></div>
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="dot"></span> Union {{VERSION}} · Android and the web</p>
+        <h1>Keep the<br><em>ordinary</em> close.</h1>
+        <p class="lede">Sleep, work, people, attention. Union keeps the messages, rooms, lessons, plans and records that support them on your own device. No account on a server. No feed to maintain.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="{{APP_URL}}">Open Union <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+          <a class="btn soft" href="#install">Get the Android app <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg></a>
+        </div>
+        <ul class="hero-meta" aria-label="At a glance">
+          <li><svg class="icon" aria-hidden="true"><use href="#i-fingerprint"/></svg> Keys on this device</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-globe"/></svg> Network optional</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg> One Android permission</li>
+        </ul>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-orbit" aria-hidden="true"></div>
+        <div class="phone">
+          <div class="phone-screen">
+            <img src="assets/screens/home.jpg" width="720" height="1228" alt="Union home screen with an identity card, the next lesson and ten capabilities" fetchpriority="high">
+          </div>
+        </div>
+        <div class="float-card float-one">
+          <span class="float-icon"><svg class="icon" aria-hidden="true"><use href="#i-key"/></svg></span>
+          <span><strong>Sealed here</strong><small>Keys never leave the device.</small></span>
+        </div>
+        <div class="float-card float-two">
+          <span class="float-icon gold"><svg class="icon" aria-hidden="true"><use href="#i-hash"/></svg></span>
+          <span><strong>Nothing to guess</strong><small>Hashes, dates and records you can check.</small></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="strip" aria-label="Built with">
+    <div class="wrap strip-inner">
+      <span class="strip-label">Under the hood</span>
+      <span>Ed25519</span><span class="sep" aria-hidden="true"></span>
+      <span>X25519</span><span class="sep" aria-hidden="true"></span>
+      <span>AES-256-GCM</span><span class="sep" aria-hidden="true"></span>
+      <span>PBKDF2-SHA256</span><span class="sep" aria-hidden="true"></span>
+      <span>Rust / WebAssembly</span><span class="sep" aria-hidden="true"></span>
+      <span>AGPL-3.0</span>
+    </div>
+  </section>
+
+  <section class="section" id="what">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="index">01</span>
+        <div>
+          <p class="eyebrow">What it is</p>
+          <h2>A place for the work itself,<br>not a stage for it.</h2>
+        </div>
+      </div>
+      <div class="intro-grid">
+        <p class="intro-lede reveal">Most apps ask you to move your life into their building. Union runs on your phone and leaves the network optional. The tools work without an account, and the door stays shut unless you open it.</p>
+        <div class="pillar-grid">
+          <article class="pillar reveal">
+            <span class="pillar-icon"><svg class="icon" aria-hidden="true"><use href="#i-fingerprint"/></svg></span>
+            <h3>Your identity</h3>
+            <p>A key pair, not a profile. Create it on your phone. Back it up yourself. No email, no password, no account on a server.</p>
+          </article>
+          <article class="pillar reveal">
+            <span class="pillar-icon"><svg class="icon" aria-hidden="true"><use href="#i-people"/></svg></span>
+            <h3>Your consent</h3>
+            <p>Contact is not permission. Choose the scopes you actually want, and take them back when you change your mind.</p>
+          </article>
+          <article class="pillar reveal">
+            <span class="pillar-icon gold"><svg class="icon" aria-hidden="true"><use href="#i-note"/></svg></span>
+            <h3>Your records</h3>
+            <p>Messages, lessons, plans and ledger entries sit in local storage. Export them when you want. Nothing is ranked.</p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section practice" id="practice">
+    <div class="wrap">
+      <div class="statement reveal">
+        <p class="eyebrow">The practice</p>
+        <blockquote>Tend the ordinary: sleep, work, people, attention. <em>Progress that costs your life is not progress.</em></blockquote>
+      </div>
+      <div class="values">
+        <article class="value reveal">
+          <span class="value-kicker">Reality</span>
+          <p>Prefer what can be checked. A claim with a hash, a date and a witness is stronger than a slogan.</p>
+        </article>
+        <article class="value reveal">
+          <span class="value-kicker">Discovery</span>
+          <p>Follow one honest question until it produces something you can use or share.</p>
+        </article>
+        <article class="value reveal">
+          <span class="value-kicker">Progress</span>
+          <p>Badges come from records, not streaks. Nothing is bought, ranked or sold to an advertiser.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="capabilities">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="index">02</span>
+        <div>
+          <p class="eyebrow">Ten things in one app</p>
+          <h2>Enough to be useful.<br>Not so much that it becomes a maze.</h2>
+        </div>
+      </div>
+      <div class="cap-grid">
+        <article class="cap reveal">
+          <div class="cap-top"><span class="cap-num">01</span><span class="cap-icon"><svg class="icon" aria-hidden="true"><use href="#i-message"/></svg></span></div>
+          <h3>Communication</h3>
+          <p>Direct messages sealed on your device. Notes to self work offline. An outbox waits for a relay.</p>
+        </article>
+        <article class="cap reveal">
+          <div class="cap-top"><span class="cap-num">02</span><span class="cap-icon"><svg class="icon" aria-hidden="true"><use href="#i-people"/></svg></span></div>
+          <h3>Community</h3>
+          <p>Rooms with a stated purpose. Public or private. Local posts until you choose to sync a public room.</p>
+        </article>
+        <article class="cap reveal">
+          <div class="cap-top"><span class="cap-num">03</span><span class="cap-icon"><svg class="icon" aria-hidden="true"><use href="#i-book"/></svg></span></div>
+          <h3>Learning</h3>
+          <p>Short courses, practice and questions. Progress stays on the device, where it belongs.</p>
+        </article>
+        <article class="cap reveal">
+          <div class="cap-top"><span class="cap-num">04</span><span class="cap-icon"><svg class="icon" aria-hidden="true"><use href="#i-compass"/></svg></span></div>
+          <h3>Experiences</h3>
+          <p>Gatherings with a date, a place and a host. Keep the record; skip the advertising.</p>
+        </article>
+        <article class="cap reveal">
+          <div class="cap-top"><span class="cap-num">05</span><span class="cap-icon"><svg class="icon" aria-hidden="true"><use href="#i-layout"/></svg></span></div>
+          <h3>Digital Presence</h3>
+          <p>A page and links that work without a server. Self-contained, signed, and quiet.</p>
+        </article>
+        <article class="cap reveal">
+          <div class="cap-top"><span class="cap-num">06</span><span class="cap-icon"><svg class="icon" aria-hidden="true"><use href="#i-spark"/></svg></span></div>
+          <h3>Union AI</h3>
+          <p>A local assistant that can propose. It cannot change a record without your approval.</p>
+        </article>
+        <article class="cap reveal">
+          <div class="cap-top"><span class="cap-num">07</span><span class="cap-icon"><svg class="icon" aria-hidden="true"><use href="#i-coins"/></svg></span></div>
+          <h3>Economic Coordination</h3>
+          <p>Plans, giving and a hash-chained ledger. Test mode is labelled on every screen.</p>
+        </article>
+        <article class="cap reveal">
+          <div class="cap-top"><span class="cap-num">08</span><span class="cap-icon"><svg class="icon" aria-hidden="true"><use href="#i-sliders"/></svg></span></div>
+          <h3>Operations</h3>
+          <p>Relay, provider, storage, audit and export. The controls are where you can see them.</p>
+        </article>
+        <article class="cap reveal">
+          <div class="cap-top"><span class="cap-num">09</span><span class="cap-icon"><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg></span></div>
+          <h3>Exploration &amp; Progress</h3>
+          <p>Evidence from use, not a score. Life, Reality and Discovery are practices, not badges alone.</p>
+        </article>
+        <article class="cap reveal">
+          <div class="cap-top"><span class="cap-num">10</span><span class="cap-icon"><svg class="icon" aria-hidden="true"><use href="#i-handshake"/></svg></span></div>
+          <h3>Mentorship &amp; Stewardship</h3>
+          <p>Guidance that leaves someone stronger. Commitments are kept as records.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section tour-section" id="inside">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="index">03</span>
+        <div>
+          <p class="eyebrow">Look inside</p>
+          <h2>Six screens, as they are.</h2>
+        </div>
+      </div>
+      <div class="tour reveal">
+        <div class="tour-tabs" role="tablist" aria-label="Screens">
+          <button class="tour-tab" role="tab" aria-selected="true" data-tour="home" id="tab-home" aria-controls="tour-panel">
+            <span>Home</span><small>The card, the next step</small>
+          </button>
+          <button class="tour-tab" role="tab" aria-selected="false" data-tour="messages" id="tab-messages" aria-controls="tour-panel" tabindex="-1">
+            <span>Messages</span><small>Sealed notes, honest delivery</small>
+          </button>
+          <button class="tour-tab" role="tab" aria-selected="false" data-tour="communities" id="tab-communities" aria-controls="tour-panel" tabindex="-1">
+            <span>Communities</span><small>Rooms with a purpose</small>
+          </button>
+          <button class="tour-tab" role="tab" aria-selected="false" data-tour="learning" id="tab-learning" aria-controls="tour-panel" tabindex="-1">
+            <span>Learning</span><small>Practice, not completion</small>
+          </button>
+          <button class="tour-tab" role="tab" aria-selected="false" data-tour="economy" id="tab-economy" aria-controls="tour-panel" tabindex="-1">
+            <span>Economy</span><small>Plans and a test-mode ledger</small>
+          </button>
+          <button class="tour-tab" role="tab" aria-selected="false" data-tour="ai" id="tab-ai" aria-controls="tour-panel" tabindex="-1">
+            <span>Union AI</span><small>Proposals before changes</small>
+          </button>
+        </div>
+        <div class="tour-panel" id="tour-panel" role="tabpanel" aria-labelledby="tab-home">
+          <div class="tour-phone">
+            <div class="phone small">
+              <div class="phone-screen">
+                <img id="tour-image" src="assets/screens/home.jpg" width="720" height="1228" alt="Union home screen" loading="lazy">
+              </div>
+            </div>
+          </div>
+          <div class="tour-copy">
+            <p class="eyebrow" id="tour-eyebrow">Home</p>
+            <h3 id="tour-title">A card, not a feed.</h3>
+            <p id="tour-text">The first screen is your identity card and the next useful step. Badges are evidence of practice. There is no timeline to keep up with.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark privacy" id="privacy">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="index">04</span>
+        <div>
+          <p class="eyebrow">Privacy, plainly</p>
+          <h2>What the relay can see.<br>What it cannot.</h2>
+        </div>
+      </div>
+      <div class="privacy-grid">
+        <div class="privacy-copy reveal">
+          <p class="intro-lede">A relay is optional. If you use one, it sees who sent an envelope, when, and how large it was. It does not see the body. It cannot forge a signed card.</p>
+          <div class="relay-diagram" aria-label="A message is sealed on your device, the relay sees routing metadata only, and the recipient opens it">
+            <div class="relay-node">
+              <span class="relay-icon"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg></span>
+              <strong>Your device</strong>
+              <small>Sealed before it leaves</small>
+            </div>
+            <span class="relay-line" aria-hidden="true"></span>
+            <div class="relay-node">
+              <span class="relay-icon"><svg class="icon" aria-hidden="true"><use href="#i-globe"/></svg></span>
+              <strong>Optional relay</strong>
+              <small>Who, when, how large</small>
+            </div>
+            <span class="relay-line" aria-hidden="true"></span>
+            <div class="relay-node">
+              <span class="relay-icon"><svg class="icon" aria-hidden="true"><use href="#i-people"/></svg></span>
+              <strong>Their device</strong>
+              <small>Opened here</small>
+            </div>
+          </div>
+          <a class="text-link" href="docs/privacy">Read the threat model <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+        </div>
+        <ul class="privacy-list reveal">
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span><strong>Keys are made here.</strong> Identity keys are generated on the device and never sent to a server.</span></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span><strong>Messages are sealed first.</strong> X25519, HKDF-SHA256 and AES-256-GCM. The relay receives ciphertext.</span></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span><strong>Backups are encrypted.</strong> PBKDF2-SHA256 at 310,000 iterations, then AES-256-GCM.</span></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span><strong>The Android app adds a lock.</strong> Secrets are wrapped with a key held by the Android Keystore.</span></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span><strong>No analytics.</strong> No advertising ID. No third-party scripts. No fonts fetched at runtime.</span></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span><strong>One permission: INTERNET.</strong> Used for the loopback asset server and the optional relay.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="install">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="index">05</span>
+        <div>
+          <p class="eyebrow">Install</p>
+          <h2>Get it on your phone.<br>Keep a way back in.</h2>
+        </div>
+      </div>
+      <div class="install-grid">
+        <article class="install-card featured reveal">
+          <div class="install-head">
+            <span class="install-icon"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg></span>
+            <span class="chip">Android 9+</span>
+          </div>
+          <h3>Union for Android</h3>
+          <p class="version">Version {{VERSION}} · {{APK_SIZE}}</p>
+          <p>Signed APK. One permission. No store account required. Android will warn you about installing from outside a store; that warning is expected.</p>
+          <a class="btn primary block" href="{{APK_URL}}" download>Download the APK <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg></a>
+          <div class="hash-box">
+            <span>SHA-256</span>
+            <code>{{APK_SHA}}</code>
+          </div>
+          <details class="verify">
+            <summary>Verify before you install</summary>
+            <pre><code>sha256sum Union-{{VERSION}}.apk
+apksigner verify --print-certs Union-{{VERSION}}.apk</code></pre>
+            <p class="fine">Signing certificate SHA-256: <code class="break">35:58:51:C9:DB:74:76:8F:8C:2B:E7:F3:79:38:0B:7B:F9:68:AB:9C:F5:F3:6A:91:3E:F5:FA:CB:DB:81:F9:42</code></p>
+          </details>
+          <a class="text-link" href="{{RELEASE_URL}}">Release notes and checksums on GitHub <svg class="icon" aria-hidden="true"><use href="#i-external"/></svg></a>
+        </article>
+        <article class="install-card reveal">
+          <div class="install-head">
+            <span class="install-icon"><svg class="icon" aria-hidden="true"><use href="#i-globe"/></svg></span>
+            <span class="chip">PWA</span>
+          </div>
+          <h3>The web app</h3>
+          <p>Open the app in a browser, then choose <strong>Add to Home screen</strong>. The shell, fonts and WASM core are cached, so it opens offline after the first load.</p>
+          <div class="qr-row">
+            <img class="qr" src="assets/brand/qr-app.svg?v={{VERSION}}" width="132" height="132" alt="QR code for union-app.cculture.net" loading="lazy">
+            <div>
+              <p class="fine">Scan with a phone camera, or open</p>
+              <a class="text-link" href="{{APP_URL}}">union-app.cculture.net <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+            </div>
+          </div>
+          <p class="fine">Same build as the Android shell. No separate account. Local storage stays on the device.</p>
+        </article>
+        <article class="install-card reveal">
+          <div class="install-head">
+            <span class="install-icon"><svg class="icon" aria-hidden="true"><use href="#i-terminal"/></svg></span>
+            <span class="chip">AGPL-3.0</span>
+          </div>
+          <h3>From source</h3>
+          <p>The source is public. Build the web app, the relay, or the signed APK on your own machine.</p>
+          <pre class="snippet"><code>git clone https://github.com/OriginLabs1/Union.git
+cd Union
+npm install
+npm run dev</code></pre>
+          <a class="text-link" href="docs/build">Build guide <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+          <a class="text-link" href="https://github.com/OriginLabs1/Union">Source on GitHub <svg class="icon" aria-hidden="true"><use href="#i-external"/></svg></a>
+        </article>
+      </div>
+      <div class="install-note reveal">
+        <svg class="icon" aria-hidden="true"><use href="#i-info"/></svg>
+        <p><strong>Do not disable Play Protect.</strong> The APK is signed with the Union release key and asks for INTERNET only. Verify the checksum and the certificate. If they do not match, stop.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section docs-section" id="docs">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="index">06</span>
+        <div>
+          <p class="eyebrow">Documentation</p>
+          <h2>The parts that should be written down.</h2>
+        </div>
+      </div>
+      <div class="docs-grid">
+        <a class="doc-card reveal" href="docs/architecture">
+          <span class="doc-icon"><svg class="icon" aria-hidden="true"><use href="#i-layout"/></svg></span>
+          <h3>Architecture</h3>
+          <p>How the Svelte app, Rust core, Android shell and optional relay fit together.</p>
+          <span class="doc-arrow"><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
+        </a>
+        <a class="doc-card reveal" href="docs/privacy">
+          <span class="doc-icon"><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg></span>
+          <h3>Privacy</h3>
+          <p>Keys, sealed envelopes, encrypted backups and the threat model.</p>
+          <span class="doc-arrow"><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
+        </a>
+        <a class="doc-card reveal" href="docs/economy">
+          <span class="doc-icon"><svg class="icon" aria-hidden="true"><use href="#i-coins"/></svg></span>
+          <h3>Economy</h3>
+          <p>Activation, reactivation, Joy/Giving and what test mode actually means.</p>
+          <span class="doc-arrow"><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
+        </a>
+        <a class="doc-card reveal" href="docs/relay">
+          <span class="doc-icon"><svg class="icon" aria-hidden="true"><use href="#i-globe"/></svg></span>
+          <h3>Relay</h3>
+          <p>Run the optional Cloudflare Worker and D1 database yourself.</p>
+          <span class="doc-arrow"><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
+        </a>
+        <a class="doc-card reveal" href="docs/build">
+          <span class="doc-icon"><svg class="icon" aria-hidden="true"><use href="#i-terminal"/></svg></span>
+          <h3>Build</h3>
+          <p>The web build, the Android toolchain and the signed package.</p>
+          <span class="doc-arrow"><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
+        </a>
+        <a class="doc-card reveal" href="docs/design">
+          <span class="doc-icon"><svg class="icon" aria-hidden="true"><use href="#i-spark"/></svg></span>
+          <h3>Design</h3>
+          <p>Lumen: type, colour, surfaces, motion and the reasons behind them.</p>
+          <span class="doc-arrow"><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
+        </a>
+        <a class="doc-card reveal" href="docs/distribution">
+          <span class="doc-icon"><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg></span>
+          <h3>Distribution</h3>
+          <p>Pages, releases, domains and the checks that come before a deploy.</p>
+          <span class="doc-arrow"><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
+        </a>
+        <a class="doc-card reveal" href="docs/release-notes">
+          <span class="doc-icon"><svg class="icon" aria-hidden="true"><use href="#i-note"/></svg></span>
+          <h3>Release notes</h3>
+          <p>What changed in {{VERSION}}, and what did not.</p>
+          <span class="doc-arrow"><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
+        </a>
+        <a class="doc-card reveal" href="docs/security">
+          <span class="doc-icon"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg></span>
+          <h3>Security</h3>
+          <p>How to report a vulnerability, and what is in scope.</p>
+          <span class="doc-arrow"><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section limits" id="limits">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="index">07</span>
+        <div>
+          <p class="eyebrow">Stated plainly</p>
+          <h2>What it does not do yet.</h2>
+        </div>
+      </div>
+      <dl class="limits-list">
+        <div class="limit reveal">
+          <dt>One device per identity</dt>
+          <dd>Multi-device key sync is not implemented. Encrypted backups are the bridge.</dd>
+        </div>
+        <div class="limit reveal">
+          <dt>Store-and-forward, not push</dt>
+          <dd>Relay delivery waits until the app is opened or you tap Sync. There is no real-time push.</dd>
+        </div>
+        <div class="limit reveal">
+          <dt>The economy is in test mode</dt>
+          <dd>Records and plans are real. Funds are not. No withdrawable value is created or promised.</dd>
+        </div>
+        <div class="limit reveal">
+          <dt>Android is sideloaded</dt>
+          <dd>There is no Play Store listing yet. The APK is signed, checksummed and published on GitHub.</dd>
+        </div>
+        <div class="limit reveal">
+          <dt>The assistant needs a provider for some work</dt>
+          <dd>The local assistant works without one. Remote inference is a choice you configure in Operations.</dd>
+        </div>
+        <div class="limit reveal">
+          <dt>Proof review is partly manual</dt>
+          <dd>The app packages an activation proof for the Union Assistant. A person still reviews it.</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="section faq" id="faq">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="index">08</span>
+        <div>
+          <p class="eyebrow">Questions</p>
+          <h2>Short answers to fair questions.</h2>
+        </div>
+      </div>
+      <div class="faq-list">
+        <details class="reveal">
+          <summary>Do I need to create an account?</summary>
+          <p>No. There is no account on a server, no email and no password. Your identity is a key pair generated on the device.</p>
+        </details>
+        <details class="reveal">
+          <summary>Does it work offline?</summary>
+          <p>Yes. Notes to self, lessons, records, backups and the app shell work without a network. The installed PWA caches its shell, fonts and WASM core after the first load.</p>
+        </details>
+        <details class="reveal">
+          <summary>Can I use Union without a relay?</summary>
+          <p>Yes. A relay adds handle lookup, store-and-forward delivery when both people are not online, and shared public rooms. It is optional and self-hostable.</p>
+        </details>
+        <details class="reveal">
+          <summary>Where are my keys?</summary>
+          <p>On your device, in local storage. The Android app also wraps secrets with a key held by the Android Keystore. Export an encrypted backup before you change phones.</p>
+        </details>
+        <details class="reveal">
+          <summary>Is the money real?</summary>
+          <p>No. Version {{VERSION}} runs its economic layer in test mode. The app says so on every economic screen. A production economy needs a backed provider, custody and legal support.</p>
+        </details>
+        <details class="reveal">
+          <summary>How do I update?</summary>
+          <p>Install the new APK over the old one. The version code increases and your keys stay. Keep the encrypted backup you made during onboarding.</p>
+        </details>
+        <details class="reveal">
+          <summary>Why is there only an APK?</summary>
+          <p>It is the honest path while the app is not in a store: one signed package, a public checksum, and source you can build yourself. A store listing may come later; it is not a promise.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap foot-grid">
+    <div class="foot-brand">
+      <a class="brand" href="/" aria-label="Union home">
+        <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true">
+          <path d="M20 14.25V37.75A12 12 0 0 0 44 37.75V14.25" fill="none" stroke="currentColor" stroke-width="7.6"/>
+          <path d="M32 34.55 37.2 39.75 32 44.95 26.8 39.75Z" fill="var(--gold)"/>
+        </svg>
+        <span class="brand-word">Union</span>
+      </a>
+      <p>A local-first app for the ordinary parts of a life. Built by Origin Labs. Licensed AGPL-3.0-only.</p>
+    </div>
+    <div class="foot-col">
+      <h2>App</h2>
+      <a href="{{APP_URL}}">Open Union</a>
+      <a href="#install">Android APK</a>
+      <a href="docs/build">Build from source</a>
+      <a href="docs/release-notes">Release notes</a>
+    </div>
+    <div class="foot-col">
+      <h2>Documentation</h2>
+      <a href="docs/architecture">Architecture</a>
+      <a href="docs/privacy">Privacy</a>
+      <a href="docs/economy">Economy</a>
+      <a href="docs/relay">Relay</a>
+      <a href="docs/">All documentation</a>
+    </div>
+    <div class="foot-col">
+      <h2>Project</h2>
+      <a href="https://github.com/OriginLabs1/Union">GitHub <svg class="icon" aria-hidden="true"><use href="#i-external"/></svg></a>
+      <a href="https://github.com/OriginLabs1/Union/releases">Releases <svg class="icon" aria-hidden="true"><use href="#i-external"/></svg></a>
+      <a href="docs/security">Security</a>
+      <a href="https://github.com/OriginLabs1/Union/blob/main/LICENSE">License <svg class="icon" aria-hidden="true"><use href="#i-external"/></svg></a>
+    </div>
+  </div>
+  <div class="wrap foot-base">
+    <span>© {{YEAR}} Origin Labs</span>
+    <span class="foot-mark"><svg class="icon" aria-hidden="true"><use href="#i-hash"/></svg> {{BUILD_SHORT}} · built {{BUILD_DATE}}</span>
+  </div>
+</footer>
+
+<script src="app.js" defer></script>
+</body>
+</html>

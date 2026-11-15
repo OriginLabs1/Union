@@ -4,7 +4,7 @@
 
 | Version | Supported |
 | --- | --- |
-| 0.0.1 | Yes |
+| 0.1.0 | Yes |
 
 ## Reporting
 
@@ -29,7 +29,7 @@ In scope:
 - The relay in `server/`, including signature verification and access control.
 - The service worker and offline behaviour.
 
-Out of scope for v0.0.1:
+Out of scope for v0.1.0:
 
 - The absence of multi-device key sync (documented limitation).
 - Metadata visible to a relay by design.

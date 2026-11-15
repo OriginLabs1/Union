@@ -1,5 +1,7 @@
 <script lang="ts">
-  let { size = 40, glow = false }: { size?: number; glow?: boolean } = $props();
+  /** Union's mark: two equal arms joined in one body, holding a champagne
+   *  keystone. The geometry is shared with scripts/gen-icons.mjs. */
+  let { size = 40, glow = false, gem = true }: { size?: number; glow?: boolean; gem?: boolean } = $props();
 </script>
 
 <svg
@@ -11,22 +13,15 @@
   aria-label="Union"
   class:glow
 >
-  <defs>
-    <linearGradient id="union-mark" x1="12" y1="9" x2="53" y2="57" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#6c5cff" />
-      <stop offset="0.5" stop-color="#4a3aff" />
-      <stop offset="1" stop-color="#0b7a6e" />
-    </linearGradient>
-    <linearGradient id="union-ring" x1="8" y1="6" x2="56" y2="58" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#17181d" stop-opacity="0.24" />
-      <stop offset="0.6" stop-color="#4a3aff" stop-opacity="0.24" />
-      <stop offset="1" stop-color="#8a5c14" stop-opacity="0.3" />
-    </linearGradient>
-  </defs>
-  <circle cx="32" cy="32" r="29" stroke="url(#union-ring)" stroke-width="1" stroke-dasharray="3 5" opacity="0.75" />
-  <path d="M20.5 16.5v19a11.5 11.5 0 0 0 23 0v-19" stroke="url(#union-mark)" stroke-width="3.6" stroke-linecap="round" />
-  <circle cx="32" cy="32" r="3.2" fill="#8a5c14" />
-  <circle cx="32" cy="32" r="7.5" stroke="#8a5c14" stroke-opacity="0.26" stroke-width="0.8" />
+  <path
+    d="M20 14.25V37.75A12 12 0 0 0 44 37.75V14.25"
+    stroke="currentColor"
+    stroke-width="7.6"
+    stroke-linecap="butt"
+  />
+  {#if gem}
+    <path d="M32 34.55 37.2 39.75 32 44.95 26.8 39.75Z" fill="var(--gold, #8a5c14)" />
+  {/if}
 </svg>
 
 <style>

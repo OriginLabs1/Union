@@ -4,7 +4,7 @@
 
 Union is a mobile-first, local-first environment. Your identity, keys and records live on your device. There is no account to create on a server, no password to leak, and no feed engineered to hold you. When you want to reach other people, an optional relay carries sealed envelopes it cannot read.
 
-Version **0.0.1** — the first genuinely usable release: installable PWA, signed Android APK, optional Cloudflare relay, and a complete activation flow.
+Version **0.1.0** — the first genuinely usable release: installable PWA, signed Android APK, optional Cloudflare relay, and a complete activation flow.
 
 ---
 
@@ -29,14 +29,14 @@ Plus: onboarding, encrypted backup and restore, a service worker for offline use
 
 ### Android APK (recommended on a phone)
 
-Download [`Union-0.0.1.apk`](https://github.com/OriginLabs1/Union/releases/download/v0.0.1/Union-0.0.1.apk) from the [release page](https://github.com/OriginLabs1/Union/releases/tag/v0.0.1) and open it. Android 9 or newer. The APK asks for **one** permission — `INTERNET` — used for the loopback asset server and the optional relay. No storage, contacts, camera, microphone, location or advertising ID.
+Download [`Union-0.1.0.apk`](https://github.com/OriginLabs1/Union/releases/download/v0.1.0/Union-0.1.0.apk) from the [release page](https://github.com/OriginLabs1/Union/releases/tag/v0.1.0) and open it. Android 9 or newer. The APK asks for **one** permission — `INTERNET` — used for the loopback asset server and the optional relay. No storage, contacts, camera, microphone, location or advertising ID.
 
 Verify before installing:
 
 ```sh
-sha256sum Union-0.0.1.apk
+sha256sum Union-0.1.0.apk
 # compare with SHA256SUMS from the same release
-apksigner verify --print-certs Union-0.0.1.apk
+apksigner verify --print-certs Union-0.1.0.apk
 ```
 
 Signing certificate (SHA-256):
@@ -44,7 +44,9 @@ Signing certificate (SHA-256):
 
 ### Progressive web app
 
-Open **https://union.cculture.net** in a browser and choose **Add to Home screen**. (`union-app.cculture.net` and `union-app-9ni.pages.dev` serve the same deployment.) The service worker caches the shell, fonts and WASM core, so it opens offline after the first load.
+Open **https://union-app.cculture.net** in a browser and choose **Add to Home screen**. (`union-app-9ni.pages.dev` serves the same deployment.) The service worker caches the shell, fonts and WASM core, so it opens offline after the first load.
+
+The project site — what Union is, how to install it, and the full documentation — is **https://union.cculture.net**.
 
 ### From source
 
@@ -52,6 +54,7 @@ Open **https://union.cculture.net** in a browser and choose **Add to Home screen
 npm install
 npm run dev        # http://127.0.0.1:5173
 npm run build      # dist/ + service worker manifest + checksums
+npm run build:site # union.cculture.net in dist-site/
 npm test           # 10 app tests (Rolldown bundle + node:test)
 npm run test:relay # 9 relay tests (real handler, in-memory store)
 npm run check      # svelte-check, 0 errors
@@ -61,12 +64,12 @@ The Android build needs a JDK, Android build-tools and the platform jars describ
 
 ```sh
 sh android/scripts/gen-keys.sh   # once; writes android/keys/ (gitignored)
-sh scripts/build-apk.sh          # release/Union-0.0.1.apk + SHA256SUMS
+sh scripts/build-apk.sh          # release/Union-0.1.0.apk + SHA256SUMS
 ```
 
 ## The economy, plainly
 
-Union v0.0.1 runs its economic layer in **test mode**. Nothing inside the app moves real money, and the app says so on every economic screen.
+Union v0.1.0 runs its economic layer in **test mode**. Nothing inside the app moves real money, and the app says so on every economic screen.
 
 - **Activation Token** — minimum **$80**, Naira equivalent accepted. An activation request starts a **14-day trial** immediately.
 - **Activation Proof** — a receipt (screenshot, photo, `.txt` or `.md`) is attached, hashed with SHA-256, and packaged for the Union Assistant on Telegram ([@Oneorigin_bot](https://t.me/Oneorigin_bot)).
@@ -108,7 +111,8 @@ public/              manifest, icons, service worker, WASM core
 rust/                Union core compiled to WebAssembly
 android/             no-Gradle Android shell (Java + resources + scripts)
 server/              optional Cloudflare Worker relay + D1 schema + tests
-scripts/             build, postbuild, APK, icons, WASM, tests
+scripts/             build, postbuild, site, APK, icons, WASM, tests
+site/                union.cculture.net — marketing page and site assets
 tests/               app tests (node:test)
 docs/                economy, privacy, relay, build, distribution, design
 ```
@@ -123,10 +127,10 @@ More: [docs/design.md](docs/design.md).
 
 ## Limitations, stated honestly
 
-- v0.0.1 is a **single-device** identity. Multi-device key sync is not implemented; backups are the bridge.
+- v0.1.0 is a **single-device** identity. Multi-device key sync is not implemented; backups are the bridge.
 - Relay delivery is store-and-forward, not real-time push. The app syncs when opened or when you tap Sync.
 - The economic layer is test mode: records and plans are real, funds are not.
-- The Union Assistant's proof ingestion depends on a bot backend; v0.0.1 packages the proof and opens the bot with the package ready to send.
+- The Union Assistant's proof ingestion depends on a bot backend; v0.1.0 packages the proof and opens the bot with the package ready to send.
 - Google Sans is a Google typeface. If you fork Union for commercial distribution, review Google's font terms for your use.
 
 ## License

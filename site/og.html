@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Union — Open Graph card</title>
+<style>
+  @font-face {
+    font-family: "Union Sans";
+    src: url("assets/fonts/google-sans-variable-latin.woff2") format("woff2-variations");
+    font-weight: 100 900;
+  }
+  @font-face {
+    font-family: "Union Code";
+    src: url("assets/fonts/google-sans-code-400-latin.woff2") format("woff2");
+    font-weight: 400;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1200px; height: 630px; overflow: hidden; }
+  body {
+    font-family: "Union Sans", sans-serif;
+    background: #101116;
+    color: #f6f4ef;
+  }
+  .card {
+    position: relative;
+    width: 1200px;
+    height: 630px;
+    padding: 76px 84px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background:
+      radial-gradient(60% 90% at 88% 4%, rgba(43, 59, 214, 0.38), transparent 62%),
+      radial-gradient(50% 80% at 2% 100%, rgba(226, 188, 123, 0.16), transparent 64%),
+      linear-gradient(155deg, #1b1e34 0%, #0b0c11 62%, #07080d 100%);
+  }
+  .card::before {
+    content: "";
+    position: absolute;
+    inset: 22px;
+    border: 1px solid rgba(246, 244, 239, 0.13);
+    border-radius: 26px;
+  }
+  .ring {
+    position: absolute;
+    right: -90px;
+    top: -130px;
+    width: 560px;
+    height: 560px;
+    border: 1px solid rgba(246, 244, 239, 0.1);
+    border-radius: 50%;
+  }
+  .ring::after {
+    content: "";
+    position: absolute;
+    inset: 84px;
+    border: 1px solid rgba(246, 244, 239, 0.08);
+    border-radius: 50%;
+  }
+  .top { display: flex; align-items: center; gap: 22px; position: relative; }
+  .mark { width: 62px; height: 62px; }
+  .word { font-size: 34px; font-weight: 600; letter-spacing: -0.03em; }
+  .kicker {
+    margin-left: auto;
+    font-size: 15px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #b9b7b0;
+  }
+  .mid { position: relative; }
+  h1 {
+    font-size: 96px;
+    line-height: 0.98;
+    letter-spacing: -0.048em;
+    font-weight: 600;
+    max-width: 12ch;
+  }
+  h1 em { font-style: italic; font-weight: 400; color: #e2bc7b; }
+  p {
+    margin-top: 26px;
+    font-size: 24px;
+    line-height: 1.42;
+    color: #c9c6bf;
+    max-width: 30ch;
+  }
+  .foot {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    font-family: "Union Code", monospace;
+    font-size: 15px;
+    color: #9d9a94;
+    position: relative;
+  }
+  .foot .dot { width: 7px; height: 7px; border-radius: 50%; background: #e2bc7b; }
+  .foot .sep { width: 4px; height: 4px; border-radius: 50%; background: rgba(246, 244, 239, 0.28); }
+  .tile {
+    position: absolute;
+    right: 84px;
+    bottom: 78px;
+    width: 168px;
+    height: 168px;
+    border-radius: 40px;
+    background: linear-gradient(150deg, #2a2c3a, #0c0d12 62%);
+    box-shadow: 0 34px 70px -24px rgba(0, 0, 0, 0.8), inset 0 0 0 1px rgba(246, 244, 239, 0.14);
+    display: grid;
+    place-items: center;
+  }
+  .tile svg { width: 112px; height: 112px; }
+</style>
+</head>
+<body>
+<div class="card" id="og">
+  <div class="ring"></div>
+  <div class="top">
+    <svg class="mark" viewBox="0 0 64 64" aria-hidden="true">
+      <path d="M20 14.25V37.75A12 12 0 0 0 44 37.75V14.25" fill="none" stroke="#F6F4EF" stroke-width="7.6"/>
+      <path d="M32 34.55 37.2 39.75 32 44.95 26.8 39.75Z" fill="#E2BC7B"/>
+    </svg>
+    <span class="word">Union</span>
+    <span class="kicker">Android + web</span>
+  </div>
+  <div class="mid">
+    <h1>Keep the<br><em>ordinary</em> close.</h1>
+    <p>Messages, rooms, lessons, plans and records. Kept on your phone, not on a server.</p>
+  </div>
+  <div class="foot">
+    <span class="dot"></span>
+    <span>union.cculture.net</span>
+    <span class="sep"></span>
+    <span>local-first</span>
+    <span class="sep"></span>
+    <span>AGPL-3.0</span>
+  </div>
+  <div class="tile">
+    <svg viewBox="0 0 64 64" aria-hidden="true">
+      <path d="M20 14.25V37.75A12 12 0 0 0 44 37.75V14.25" fill="none" stroke="#F6F4EF" stroke-width="7.6"/>
+      <path d="M32 34.55 37.2 39.75 32 44.95 26.8 39.75Z" fill="#E2BC7B"/>
+    </svg>
+  </div>
+</div>
+</body>
+</html>

@@ -7,8 +7,9 @@ Requirements: **Node 20+** (developed on Node 22).
 ```sh
 npm install
 npm run dev       # Vite dev server on http://127.0.0.1:5173
-npm run build     # production bundle in dist/
-npm run preview   # serve dist/ on http://127.0.0.1:4173
+npm run build      # production bundle in dist/
+npm run build:site # marketing + docs site in dist-site/
+npm run preview    # serve dist/ on http://127.0.0.1:4173
 ```
 
 `npm run build` runs `vite build`, then [`scripts/postbuild.mjs`](../scripts/postbuild.mjs), which copies the WASM core and icons, writes `404.html`, `build.json` and `SHA256SUMS`, and stamps the service worker manifest.
@@ -22,6 +23,8 @@ npm run test:relay  # 9 relay tests
 ```
 
 The app tests are plain `node:test` against a Rolldown bundle of the pure library modules. No extra test dependency is added.
+
+`npm run build:site` renders `docs/*.md` into `dist-site/`, copies the real app screenshots and icons, stages the signed APK, and writes the QR code, sitemap, checksums and `build.json`. It does not modify `dist/`; the two sites deploy independently.
 
 ### Rust core
 
@@ -90,7 +93,7 @@ Useful environment variables:
 | Variable | Default |
 | --- | --- |
 | `UNION_VERSION_NAME` | `package.json` version |
-| `UNION_VERSION_CODE` | `1` |
+| `UNION_VERSION_CODE` | `versionCode` from `AndroidManifest.xml` |
 | `UNION_SKIP_WEB` | `0` (set `1` to reuse `dist/`) |
 | `UNION_UNSIGNED` | `0` (set `1` for CI/F-Droid signing) |
 | `UNION_KEYSTORE` | `android/keys/union.p12` |
@@ -100,18 +103,18 @@ Useful environment variables:
 ### Inspect
 
 ```sh
-aapt2 dump badging release/Union-0.0.1.apk
-apksigner verify --verbose --print-certs release/Union-0.0.1.apk
-sha256sum release/Union-0.0.1.apk
-unzip -l release/Union-0.0.1.apk | head
+aapt2 dump badging release/Union-0.1.0.apk
+apksigner verify --verbose --print-certs release/Union-0.1.0.apk
+sha256sum release/Union-0.1.0.apk
+unzip -l release/Union-0.1.0.apk | head
 ```
 
-Expected: package `com.oneorigin.union`, version `0.0.1 (1)`, `sdkVersion 28`, `targetSdkVersion 34`, one permission `android.permission.INTERNET`.
+Expected: package `com.oneorigin.union`, version `0.1.0 (2)`, `sdkVersion 28`, `targetSdkVersion 34`, one permission `android.permission.INTERNET`.
 
 ### Install
 
 ```sh
-adb install -r release/Union-0.0.1.apk
+adb install -r release/Union-0.1.0.apk
 ```
 
 Or copy the APK to the phone and open it, allowing install from that source once.

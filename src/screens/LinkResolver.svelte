@@ -174,7 +174,7 @@
       <p class="muted">{token.memo || 'A transparent Digital Giving note.'}</p>
       <div class="metric" style="width:100%"><strong>{money(token.suggestedUsd, 'USD')}</strong><span>suggested · nothing is charged automatically</span></div>
       <button class="btn soft block" onclick={() => router.go('/economy')}>Open Economy</button>
-      <p class="hint">v0.0.1 records giving in test mode. No withdrawable value is created or promised.</p>
+      <p class="hint">v0.1.0 records giving in test mode. No withdrawable value is created or promised.</p>
     </section>
   {:else if token?.kind === 'invite'}
     <section class="card pad stack center">

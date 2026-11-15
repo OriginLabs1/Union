@@ -16,7 +16,7 @@ ROOT=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
 cd "$ROOT"
 
 VERSION_NAME=${UNION_VERSION_NAME:-$(node -p "require('./package.json').version")}
-VERSION_CODE=${UNION_VERSION_CODE:-1}
+VERSION_CODE=${UNION_VERSION_CODE:-$(sed -n 's/.*android:versionCode="\([0-9]*\)".*/\1/p' android/app/src/main/AndroidManifest.xml)}
 ANDROID_JAR=${ANDROID_JAR:-$ROOT/android/toolchain/android-34.jar}
 R8_JAR=${R8_JAR:-$ROOT/android/toolchain/r8.jar}
 KEYS=${UNION_KEYS:-$ROOT/android/keys}

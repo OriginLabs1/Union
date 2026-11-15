@@ -48,7 +48,7 @@ public class UnionHost {
     private static final String KEY_ALIAS = "union.secrets.v1";
     private static final String PREFS = "union.secure";
     private static final String KEYSTORE = "AndroidKeyStore";
-    private static final String VERSION = "0.0.1";
+    private static final String VERSION = "0.1.0";
 
     private final Activity activity;
     private final SharedPreferences prefs;

@@ -400,7 +400,7 @@ export function buildUnionSurface(kind: SurfaceKind, ctx: UnionSurfaceContext): 
       ] }
     ],
     economy: [
-      { type: 'heading', title: 'Transparent by construction', subtitle: 'v0.0.1 records economic intent in test mode. No funds move in the app.' },
+      { type: 'heading', title: 'Transparent by construction', subtitle: 'v0.1.0 records economic intent in test mode. No funds move in the app.' },
       { type: 'list', items: [
         { title: 'Activation Token · $80 minimum', text: 'One-time. Naira equivalent accepted. 14-day trial while proof is reviewed.' },
         { title: 'Reactivation Plan · $10/month minimum', text: 'After a verified Special or Super experience.' },

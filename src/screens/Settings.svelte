@@ -228,7 +228,7 @@
         <a class="btn xs ghost" href={TELEGRAM_CREATOR} target="_blank" rel="noopener noreferrer"><Icon name="send" size={13} /> Creator</a>
         <button class="btn xs ghost" onclick={() => shareCard()}><Icon name="share" size={13} /> My card</button>
       </div>
-      <p class="tiny faint" style="margin:0">v0.0.1 is a real, usable foundation. It does not pretend to be a finished economy, a custodial wallet or a substitute for legal and safeguarding advice.</p>
+      <p class="tiny faint" style="margin:0">v0.1.0 is a real, usable foundation. It does not pretend to be a finished economy, a custodial wallet or a substitute for legal and safeguarding advice.</p>
     </div>
   </section>
 

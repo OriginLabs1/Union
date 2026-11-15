@@ -1,8 +1,8 @@
 # Activation, plans and the economy
 
-Union v0.0.1 has a real economic **record** and a **test-mode** economy. The distinction matters, and the app states it on every economic screen:
+Union v0.1.0 has a real economic **record** and a **test-mode** economy. The distinction matters, and the app states it on every economic screen:
 
-> v0.0.1 test mode. No real funds move inside the app, and no withdrawable value is promised. A production economy needs a backed provider, custody and legal support.
+> v0.1.0 test mode. No real funds move inside the app, and no withdrawable value is promised. A production economy needs a backed provider, custody and legal support.
 
 Nothing in Union asks for card details, bank credentials or a wallet seed. Payments happen outside the app; Union records the request, the proof and the decision.
 
@@ -68,7 +68,7 @@ These are optional, exact-named plans for people who want to give beyond activat
 - A **2-week trial** starts in the app immediately when you start or request the plan.
 - Nothing is charged automatically; you can end the plan at any time.
 
-The **Digital Giving record** is a local ledger for gifts made outside the app. Each entry is hash-chained to the previous one, so edits are visible. In v0.0.1 it is a record, not a payment rail.
+The **Digital Giving record** is a local ledger for gifts made outside the app. Each entry is hash-chained to the previous one, so edits are visible. In v0.1.0 it is a record, not a payment rail.
 
 ## 6 · Ledger and honesty
 
@@ -80,7 +80,7 @@ hash = SHA-256(previous hash + canonical entry)
 
 The Economy screen lets you verify the chain. A relay cannot read it, and no server holds a copy unless you export it yourself.
 
-What the economy does **not** do in v0.0.1:
+What the economy does **not** do in v0.1.0:
 
 - take payments,
 - hold balances,
@@ -96,7 +96,7 @@ Use the Union Assistant ([@Oneorigin_bot](https://t.me/Oneorigin_bot)) for activ
 
 ## 8 · Disclosure summary
 
-| Item | v0.0.1 |
+| Item | v0.1.0 |
 | --- | --- |
 | Activation minimum | $80 equivalent |
 | Trial after request | 14 days |

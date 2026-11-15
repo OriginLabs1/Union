@@ -24,8 +24,11 @@ const required = [
   'manifest.webmanifest',
   'sw.js',
   'icons/favicon.svg',
+  'icons/favicon-32.png',
   'icons/icon-192.png',
   'icons/icon-512.png',
+  'icons/icon-maskable-192.png',
+  'icons/icon-maskable-512.png',
   'icons/apple-touch-icon.png'
 ];
 const missing = required.filter((file) => !existsSync(join(dist, file)));

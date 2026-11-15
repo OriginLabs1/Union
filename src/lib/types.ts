@@ -1,4 +1,4 @@
-/** Union v0.0.1 domain types. Versioned, portable, JSON-friendly. */
+/** Union v0.1.0 domain types. Versioned, portable, JSON-friendly. */
 
 export type Experience = 'special' | 'super';
 export type Currency = 'USD' | 'NGN';
@@ -360,7 +360,7 @@ export interface LedgerEntry {
   at: string;
   hash: string;
   prevHash: string;
-  /** only for transparency; no real funds move in v0.0.1 */
+  /** only for transparency; no real funds move in v0.1.0 */
   testMode: boolean;
 }
 

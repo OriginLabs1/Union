@@ -1,13 +1,14 @@
 {
   "name": "union",
   "private": true,
-  "version": "0.0.1",
+  "version": "0.1.0",
   "type": "module",
-  "description": "Union \u2014 one connected environment for communication, relationships, discovery, learning, experiences, intelligence and meaningful participation.",
+  "description": "Union — one connected environment for communication, relationships, discovery, learning, experiences, intelligence and meaningful participation.",
   "license": "AGPL-3.0-only",
   "scripts": {
     "dev": "vite",
     "build": "vite build && node scripts/postbuild.mjs",
+    "build:site": "node scripts/build-site.mjs",
     "preview": "vite preview --host 127.0.0.1 --port 4173",
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "test": "node scripts/build-tests.mjs && node --test tests/*.test.mjs",
@@ -17,6 +18,9 @@
     "apk": "sh scripts/build-apk.sh",
     "release": "node scripts/release.mjs",
     "deploy": "node scripts/deploy-cloudflare.mjs",
+    "deploy:app": "node scripts/deploy-cloudflare.mjs app",
+    "deploy:site": "node scripts/deploy-cloudflare.mjs site",
+    "deploy:all": "node scripts/deploy-cloudflare.mjs all",
     "pretest": "node scripts/build-tests.mjs"
   },
   "dependencies": {
@@ -27,6 +31,9 @@
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "7.3.1",
+    "jpeg-js": "^0.4.4",
+    "marked": "^18.2.0",
+    "pngjs": "^7.0.0",
     "svelte": "5.57.3",
     "svelte-check": "^4.3.0",
     "typescript": "^5.9.0",
