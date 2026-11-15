@@ -29,7 +29,7 @@ Plus: onboarding, encrypted backup and restore, a service worker for offline use
 
 ### Android APK (recommended on a phone)
 
-Download [`Union-0.0.1.apk`](https://union-app-9ni.pages.dev/Union-0.0.1.apk) and open it. Android 9 or newer. The APK asks for **one** permission — `INTERNET` — used for the loopback asset server and the optional relay. No storage, contacts, camera, microphone, location or advertising ID.
+Download [`Union-0.0.1.apk`](https://github.com/OriginLabs1/Union/releases/download/v0.0.1/Union-0.0.1.apk) from the [release page](https://github.com/OriginLabs1/Union/releases/tag/v0.0.1) and open it. Android 9 or newer. The APK asks for **one** permission — `INTERNET` — used for the loopback asset server and the optional relay. No storage, contacts, camera, microphone, location or advertising ID.
 
 Verify before installing:
 

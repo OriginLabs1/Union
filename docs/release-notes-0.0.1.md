@@ -16,7 +16,7 @@ This is the first release that is meant to be used, not demonstrated: installabl
 - **Activation flow** — request → 14-day trial → proof with SHA-256 → package → Union Assistant → verification → $10/month reactivation.
 - **Joy/Giving Plans** — optional, “Joyful Giver”, 2-week trial, no automatic charge.
 - **Hash-chained ledger** — every economic record is local and verifiable.
-- **Optional relay** — Cloudflare Worker + D1, Ed25519-signed writes, 8 passing relay tests.
+- **Optional relay** — Cloudflare Worker + D1, Ed25519-signed writes, 9 passing relay tests.
 
 ## Install
 
@@ -41,7 +41,7 @@ Signing certificate SHA-256:
 
 ### Web / PWA
 
-Open the Pages site and choose **Add to Home screen**. Works offline after the first load.
+Open <https://union-app-9ni.pages.dev> and choose **Add to Home screen**. Works offline after the first load.
 
 ## Verify
 

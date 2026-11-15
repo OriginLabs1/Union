@@ -11,12 +11,12 @@ Union ships three ways from the same source:
 | Surface | State |
 |---|---|
 | Pages deployment | **Live** at <https://union-app-9ni.pages.dev> |
-| Signed APK | **Live** at `/Union-0.0.1.apk` (383,099 bytes, SHA-256 `905116ad…162ed2`) |
+| Signed APK | **Live** in the [v0.0.1 release](https://github.com/OriginLabs1/Union/releases/tag/v0.0.1) (383,099 bytes, SHA-256 `905116ad…162ed2`) |
 | Relay | **Live** at <https://union-relay.access1tutamailcom.workers.dev> |
 | `union.cculture.net` | DNS verified; custom domain **pending** |
 | `union-app.cculture.net` | DNS verified; custom domain **pending** |
 | `union-relay.cculture.net` | Worker domain configured; hostname **redirects to itself** |
-| GitHub push / release | **Blocked** — the supplied PAT returns `401 Bad credentials` |
+| Source + release | **Live** at <https://github.com/OriginLabs1/Union> |
 
 Both custom hostnames are attached to the Pages project and their CNAMEs verify. They
 stay pending because a zone-level Redirect Rule on `cculture.net` returns
