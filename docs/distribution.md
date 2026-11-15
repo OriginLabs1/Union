@@ -106,6 +106,19 @@ Tag `v0.1.0`, attach `Union-0.1.0.apk` and `SHA256SUMS`, and copy the notes from
 
 Android warns about installing an app from outside a store. That warning is expected. Union asks for `INTERNET` only, and the download page says why. Never ask people to disable Play Protect.
 
+## Other channels
+
+GitHub Releases and this site are the channels that exist today. Here is the honest state of the rest.
+
+| Channel | State | What it still needs |
+| --- | --- | --- |
+| F-Droid | Not submitted | A reproducible build from the tagged source, `metadata/` with description, categories, screenshots and licences, no proprietary blobs (there are none), and the release key kept stable across versions. |
+| Google Play | Not submitted | A Play Console account, an app bundle signed with the upload key, the data-safety form (no collection, no ads, no analytics), a privacy policy URL, and listing graphics. |
+| Obtainium | Works today | Nothing to publish: add `https://github.com/OriginLabs1/Union` and it follows GitHub releases. Useful for people who want updates without a store account. |
+| Direct APK | Live | Keep `versionCode` increasing and the certificate unchanged. |
+
+The rules are the same everywhere: one build per version signed by the same key, the certificate fingerprint published beside it, never a request to disable Play Protect, and the site download byte-identical to the release asset.
+
 ## Cloudflare relay
 
 See [relay.md](relay.html). Short version:
