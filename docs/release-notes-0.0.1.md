@@ -41,7 +41,7 @@ Signing certificate SHA-256:
 
 ### Web / PWA
 
-Open <https://union-app-9ni.pages.dev> and choose **Add to Home screen**. Works offline after the first load.
+Open <https://union.cculture.net> and choose **Add to Home screen**. Works offline after the first load.
 
 ## Verify
 

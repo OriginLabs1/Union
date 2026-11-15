@@ -10,21 +10,25 @@ Union ships three ways from the same source:
 
 | Surface | State |
 |---|---|
-| Pages deployment | **Live** at <https://union-app-9ni.pages.dev> |
+| Pages deployment | **Live** at <https://union.cculture.net> and <https://union-app-9ni.pages.dev> |
 | Signed APK | **Live** in the [v0.0.1 release](https://github.com/OriginLabs1/Union/releases/tag/v0.0.1) (383,099 bytes, SHA-256 `905116ad…162ed2`) |
-| Relay | **Live** at <https://union-relay.access1tutamailcom.workers.dev> |
-| `union.cculture.net` | DNS verified; custom domain **pending** |
-| `union-app.cculture.net` | DNS verified; custom domain **pending** |
-| `union-relay.cculture.net` | Worker domain configured; hostname **redirects to itself** |
+| Relay | **Live** at <https://union-relay.cculture.net> and <https://union-relay.access1tutamailcom.workers.dev> |
+| `union.cculture.net` | **Live** — canonical brand address |
+| `union-app.cculture.net` | **Live** — alternate address |
+| `union-relay.cculture.net` | **Live** — Worker custom domain |
 | Source + release | **Live** at <https://github.com/OriginLabs1/Union> |
 
-Both custom hostnames are attached to the Pages project and their CNAMEs verify. They
-stay pending because a zone-level Redirect Rule on `cculture.net` returns
-`301 Location: <same URL>` for every hostname in the zone — including names that do
-not exist. Remove that rule under **Cloudflare → cculture.net → Rules → Redirect
-Rules** (and **Account Home → Bulk Redirects** if one is listed), or grant the API
-token **Zone → Zone Rulesets → Edit** and **Account → Account Rulesets → Edit**.
-No DNS change is needed.
+Earlier, every hostname in the zone returned `301 Location: <same URL>`. The cause was a
+single Redirect Rule on `cculture.net` named *Redirect from WWW to root*, set to
+**All incoming requests** with the target `wildcard_replace(http.request.full_uri,
+"https://www.*", "https://${1}")`. For any URL that did not start with
+`https://www.`, that expression returned the request unchanged, so the rule redirected
+each request to itself.
+
+The rule now matches **Hostname wildcard `www.*`** only, which preserves its intended
+`www` → apex behaviour and leaves every other hostname alone. Cloudflare still lists the
+Pages custom domains as `pending` in the dashboard even though they serve traffic with a
+valid `*.cculture.net` certificate; treat the live response as the source of truth.
 
 ## Cloudflare Pages (PWA)
 
@@ -49,14 +53,14 @@ CLOUDFLARE_API_TOKEN=… CLOUDFLARE_ACCOUNT_ID=… npm run deploy
 Override the target with `PAGES_PROJECT` and `PAGES_BRANCH`. Without an APK the
 script deploys the web app only.
 
-Live at **https://union-app-9ni.pages.dev**. The project has two custom hostnames:
+Live at **https://union.cculture.net**. The project has two custom hostnames:
 
 - **https://union.cculture.net** — the canonical brand address
 - **https://union-app.cculture.net** — an alternate address
 
 Both are proxied CNAMEs to `union-app-9ni.pages.dev`, attached in
-**Pages → union-app → Custom domains**. If a certificate is still initialising,
-the `pages.dev` address serves the same deployment.
+**Pages → union-app → Custom domains**. The `pages.dev` address always serves the
+same deployment and is the fallback if a custom hostname is ever misconfigured.
 
 PWA install: open the site, use **Add to Home screen**. The service worker caches
 the shell, icons, fonts and WASM core, so it opens offline after the first load.
@@ -74,8 +78,8 @@ The deploy script places the APK and checksum on the Pages site, so the download
 URL is stable:
 
 ```
-https://union-app-9ni.pages.dev/Union-0.0.1.apk
-https://union-app-9ni.pages.dev/SHA256SUMS
+https://union.cculture.net/Union-0.0.1.apk
+https://union.cculture.net/SHA256SUMS
 ```
 
 When a GitHub release is available, attach the same files there instead of

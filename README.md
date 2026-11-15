@@ -44,7 +44,7 @@ Signing certificate (SHA-256):
 
 ### Progressive web app
 
-Open **https://union-app-9ni.pages.dev** in a browser and choose **Add to Home screen**. (The custom addresses `union.cculture.net` and `union-app.cculture.net` point at the same deployment; see [docs/distribution.md](docs/distribution.md) for their status.) The service worker caches the shell, fonts and WASM core, so it opens offline after the first load.
+Open **https://union.cculture.net** in a browser and choose **Add to Home screen**. (`union-app.cculture.net` and `union-app-9ni.pages.dev` serve the same deployment.) The service worker caches the shell, fonts and WASM core, so it opens offline after the first load.
 
 ### From source
 
@@ -95,7 +95,7 @@ Union is complete without a server. A relay adds:
 - shared public rooms,
 - resolvable link URLs (`/l/<id>`).
 
-The relay is a Cloudflare Worker + D1 database in [`server/`](server/), with every write authenticated by an Ed25519 signature. It runs at **https://union-relay.access1tutamailcom.workers.dev**; the intended first-party address is `https://union-relay.cculture.net`. It is optional and self-hostable. Deploy notes: [docs/relay.md](docs/relay.md).
+The relay is a Cloudflare Worker + D1 database in [`server/`](server/), with every write authenticated by an Ed25519 signature. It runs at **https://union-relay.cculture.net** (fallback: `https://union-relay.access1tutamailcom.workers.dev`). It is optional and self-hostable. Deploy notes: [docs/relay.md](docs/relay.md).
 
 ## Repository layout
 

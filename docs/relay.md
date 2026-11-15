@@ -11,9 +11,8 @@ It cannot read message bodies. It verifies every write with Ed25519 and stores c
 
 ## A live deployment
 
-Union's own relay is deployed at **https://union-relay.access1tutamailcom.workers.dev**.
-The Worker also declares the custom domain `https://union-relay.cculture.net`; use the
-`workers.dev` address until that hostname resolves directly. It runs with D1 database
+Union's own relay is deployed at **https://union-relay.cculture.net** (also reachable at
+**https://union-relay.access1tutamailcom.workers.dev**). It runs with D1 database
 `union-relay` (`5994448e-1e86-4c38-8867-d11189898670`) and allows these browser origins:
 
 ```
